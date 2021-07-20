@@ -24,9 +24,9 @@ for (const folder of commandFolders) {
 }
 
 
-
 // On Load of the bot
 client.once('ready', () => {
+    client.user.setActivity('with your dollars');
     console.log(`Logged in as ${client.user.username}!`);
 });
 
