@@ -8,9 +8,4 @@ module.exports = {
         message.channel.send("https://github.com/Howardlight/Riad-Salemeh-JS");
     }
 
-
-
-
-
-
 }

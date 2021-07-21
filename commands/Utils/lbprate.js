@@ -31,6 +31,7 @@ const getWebsiteData = async () => {
 module.exports = {
     name: "lbprate",
     description: "use Fetch and Cheerio to get the LBP rate",
+    cooldown:  10,
     // notice how it's an async func
     async execute(message, args) {
         buyRate = await getWebsiteData();
