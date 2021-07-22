@@ -1,3 +1,9 @@
+// // server related
+// const express = require("express");
+// const path = require("path");
+// const PORT  = process.env.PORT || 5000
+
+
 const Discord = require('discord.js');
 const fs = require('fs');
 
