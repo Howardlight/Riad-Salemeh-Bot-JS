@@ -7,7 +7,11 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 
-import {TOKEN , PREFIX} from "./config.json";
+// import {TOKEN , PREFIX} from "./config.json";
+const config = require("./config.json");
+
+const PREFIX = config.PREFIX;
+const TOKEN = config.TOKEN;
 
 // initialize Client
 const client = new Discord.Client();
