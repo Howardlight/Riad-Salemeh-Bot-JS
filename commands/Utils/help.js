@@ -1,7 +1,8 @@
 // get the prefix
-const dotenv = require("../../node_modules/dotenv");
-dotenv.config;
-const prefix = process.env.prefix;
+// const dotenv = require("../../node_modules/dotenv");
+// dotenv.config;
+import {PREFIX} from "../../config.json";
+const prefix = PREFIX;
 
 module.exports = {
     name: 'help',

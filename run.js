@@ -7,6 +7,8 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 
+import {TOKEN , PREFIX} from "./config.json";
+
 // initialize Client
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -14,8 +16,8 @@ client.cooldowns = new Discord.Collection();
 
 // dotenv, contains TOKEN and other important
 // keys
-const dotenv = require('dotenv');
-dotenv.config();
+// const dotenv = require('dotenv');
+// dotenv.config();
 
 
 // Grab all the commands
@@ -39,10 +41,10 @@ client.once('ready', () => {
 
 client.on("message", message=> {
     // if message author is a bot/ doesn't start with prefix, ignore
-    if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
     // declare the args, command name
-    var args = message.content.slice(process.env.prefix.length).trim().split(/ +/);
+    var args = message.content.slice(PREFIX.length).trim().split(/ +/);
     var commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName);
 
@@ -77,7 +79,7 @@ client.on("message", message=> {
         let reply = `you didn't provide any arguments, ${message.author}`;
 
         if(command.usage) {
-            reply += `\nThe proper usage would beL \`${prefix}${command.name} ${command.usage}\``;
+            reply += `\nThe proper usage would beL \`${PREFIX}${command.name} ${command.usage}\``;
         }
 
         return message.channel.send(reply);
@@ -95,4 +97,4 @@ client.on("message", message=> {
 });
 
 
-client.login(process.env.TOKEN);
+client.login(TOKEN);
