@@ -1,13 +1,7 @@
-// // server related
-// const express = require("express");
-// const path = require("path");
-// const PORT  = process.env.PORT || 5000
-
-
 const Discord = require('discord.js');
 const fs = require('fs');
 
-// import {TOKEN , PREFIX} from "./config.json";
+
 const config = require("./config.json");
 
 const PREFIX = config.PREFIX;
@@ -20,8 +14,8 @@ client.cooldowns = new Discord.Collection();
 
 // dotenv, contains TOKEN and other important
 // keys
-// const dotenv = require('dotenv');
-// dotenv.config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 // Grab all the commands
@@ -101,4 +95,4 @@ client.on("message", message=> {
 });
 
 
-client.login(TOKEN);
+client.login(process.env.TOKEN);
