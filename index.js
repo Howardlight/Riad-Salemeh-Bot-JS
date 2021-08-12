@@ -5,7 +5,7 @@ const fs = require('fs');
 const config = require("./config.json");
 
 const PREFIX = config.PREFIX;
-const TOKEN = config.TOKEN;
+// const TOKEN = config.TOKEN; DELETE THIS
 
 // initialize Client
 const client = new Discord.Client();

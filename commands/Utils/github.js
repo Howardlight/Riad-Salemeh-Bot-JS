@@ -1,5 +1,3 @@
-// const Discord = require(".../node_modules/discord.js");
-
 
 module.exports = {
     name: "github",

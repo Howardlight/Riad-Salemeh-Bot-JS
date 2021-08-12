@@ -1,7 +1,3 @@
-// get the prefix
-// const dotenv = require("../../node_modules/dotenv");
-// dotenv.config;
-// import {PREFIX} from "../../config.json";
 const config = require("../../config.json");
 const prefix = config.PREFIX;
 
