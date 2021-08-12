@@ -18,13 +18,13 @@ module.exports = {
 
 
 
-            return message.author.send(data, {split: true})
+            return message.author.send(data.toString(), {split: true})
                 .then(() => {
                     if(message.channel.type === 'dm') return;
                     message.reply(`I've sent you a DM with all my commands!`);
                 })
                 .catch(error => {
-                    console.error(`Could not sent help DM to ${mesasge.author.tag}.\n`, error);
+                    console.error(`Could not sent help DM to ${message.author.tag}.\n`, error);
                     message.reply('it seems like i can\'t DM you! Do you have DMs disabled?');
                 });
         }
@@ -44,9 +44,7 @@ module.exports = {
 
         data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
-        message.channel.send(data, {split: true});
+        response = data.join("\n");
+        message.channel.send(response.toString(), {split: true});
     },
-
-
-
 };

@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { Client, Intents, Collection } = require("discord.js");
 const fs = require('fs');
 
 
@@ -7,10 +7,15 @@ const config = require("./config.json");
 const PREFIX = config.PREFIX;
 // const TOKEN = config.TOKEN; DELETE THIS
 
+
+// Specify Intents for Client
+const defaultIntents = new Intents();
+defaultIntents.add(Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES);
+
 // initialize Client
-const client = new Discord.Client();
-client.commands = new Discord.Collection();
-client.cooldowns = new Discord.Collection();
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES] });
+client.commands = new Collection();
+client.cooldowns = new Collection();
 
 // dotenv, contains TOKEN and other important
 // keys
@@ -37,7 +42,7 @@ client.once('ready', () => {
 });
 
 
-client.on("message", message=> {
+client.on("messageCreate", message => {
     // if message author is a bot/ doesn't start with prefix, ignore
     if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
@@ -52,7 +57,7 @@ client.on("message", message=> {
     // handles cooldowned Commands
     const { cooldowns } = client;
     if(!cooldowns.has(command.name)) {
-        cooldowns.set(command.name, new Discord.Collection());
+        cooldowns.set(command.name, new Collection());
     }
 
     const now = Date.now();
